@@ -1,0 +1,49 @@
+.error-pages {
+    text-align: center;
+    padding-top: 100px;
+}
+
+.error-pages .icon {
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.error-pages h1 {
+    color: #37363e;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+}
+
+.error-pages h4 {
+    color: #767279;
+    font-weight: normal;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.error-pages form {
+    width: 400px;
+    margin: 0px auto;
+    margin-top: 30px;
+    position: relative;
+}
+
+.error-pages form .form-control {
+    padding-left: 34px;
+    height: 40px;
+}
+
+.error-pages form .fa {
+    position: absolute;
+    left: 10px;
+    top: 11px;
+    font-size: 16px;
+}
+
+.error-pages .bottom-links {
+    margin-top: 30px;
+}
+
+.error-pages .bottom-links a {
+    margin: 0px 6px;
+}

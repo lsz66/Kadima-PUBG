@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="kadima.war">
+    <output-path>$USER_HOME$/Desktop</output-path>
+    <root id="archive" name="kadima.war.war">
+      <element id="artifact" artifact-name="Kadima:war exploded" />
+    </root>
+  </artifact>
+</component>

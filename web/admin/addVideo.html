@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加视频</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h3 class="text-center">添加视频</h3><br/>
+    <form action="/video" method="post" id="newsForm">
+        <input hidden name="action" value="add"/>
+        <div class="input-group input-group-md">
+            <span class="input-group-addon">视频名称</span>
+            <input type="text" class="form-control" name="name" required/>
+        </div>
+        <br/>
+        <div class="input-group input-group-md">
+            <span class="input-group-addon">视频链接</span>
+            <input type="text" class="form-control" name="path" required/>
+        </div>
+        <br/>
+        <div style="text-align: center">
+            <button type="submit" class="btn btn-success">提交</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

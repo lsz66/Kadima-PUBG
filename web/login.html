@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>绝地求生</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/css/bootstrap-pubg.css"/>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/vue.js"></script>
+    <script src="assets/layer/layer.js"></script>
+</head>
+<body>
+<!--导航-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!--小屏幕导航按钮和logo-->
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html" class="navbar-brand">PUBG</a>
+        </div>
+        <!--小屏幕导航按钮和logo-->
+        <!--导航-->
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav  navbar-right">
+                <li><a href="index.html">绝地首页</a></li>
+                <li><a href="strategy.html">游戏攻略</a></li>
+                <li><a href="news.html">新闻中心</a></li>
+                <li><a href="index.html#course">精彩视频</a></li>
+                <li><a href="login.html">用户登陆</a></li>
+            </ul>
+        </div>
+        <!--导航-->
+
+    </div>
+</nav>
+<!--导航-->
+<!--登陆框-->
+<section id="login">
+    <div class="lvjing">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="bg">
+                        <form class="bs-example bs-example-form" role="form" id="loginForm" action="#" method="post">
+                            <h3>管理员登陆</h3>
+                            <input hidden name="action" value="login"/>
+                            <div class="input-group input-group-md">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                <input type="text" class="form-control" placeholder="用户名" name="username"/>
+                            </div>
+                            <div class="input-group input-group-md">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                <input type="password" class="form-control" placeholder="密码" name="password"/>
+                            </div>
+                        </form>
+                        <button class="btn btn-success btn-block" onclick="login()">
+                            登录
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h2>欢迎使用KAIDMA-PUBG</h2>
+                    <p>请各用户使用自己的账号密码登陆</p>
+                    <p>管理员怎么登陆就应该自己心里有点*数</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--登陆框-->
+<!--footer-->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>岭南师范学院 ©2018 KADIMA</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--footer-->
+
+<script>
+    $(function () {
+        $(document).keydown(function (event) {
+            if (event.keyCode === 13)
+                login();
+        })
+    });
+
+    function login() {
+        $.post("user", $("#loginForm").serialize(), function (data) {
+            if (data === 1)
+                location.href = "/admin";
+            else
+                layer.msg("用户名或密码错误，请检查");
+        }, "JSON");
+    }
+</script>
+</body>
+</html>

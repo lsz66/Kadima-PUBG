@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>绝地求生</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/css/bootstrap-pubg.css"/>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/vue.js"></script>
+    <script src="assets/layer/layer.js"></script>
+</head>
+<body>
+
+<!--导航-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!--小屏幕导航按钮和logo-->
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html" class="navbar-brand">PUBG</a>
+        </div>
+        <!--小屏幕导航按钮和logo-->
+        <!--导航-->
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav  navbar-right">
+                <li><a href="index.html">绝地首页</a></li>
+                <li><a href="strategy.html">游戏攻略</a></li>
+                <li><a href="news.html">新闻中心</a></li>
+                <li><a href="#course">精彩视频</a></li>
+                <li><a href="login.html">用户登陆</a></li>
+            </ul>
+        </div>
+        <!--导航-->
+
+    </div>
+</nav>
+<!--导航-->
+<!--home-->
+<div id="lsz">
+    <section id="home">
+        <div class="lvjing">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <h1>绝地求生</h1>
+                        <p>
+                            100人同时抢夺资源 只为成为最后的生存者<br/>
+                            究竟谁能大吉大利 今晚吃鸡
+                        </p>
+                        <img src="image/slide-1.jpg" class="img-responsive" alt="php">
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--home-->
+    <!--三个按钮-->
+    <section id="bbs">
+        <div class="container">
+            <div class="row">
+                <a href="strategy.html">
+                    <div class="col-md-4">
+                        <span class="glyphicon glyphicon-align-justify xinwen"></span>
+                        <h3>游戏攻略</h3><br/>
+                        <p>为玩家提供游戏最新攻略、教学、常见问题解答</p>
+                    </div>
+                </a>
+                <a href="#course">
+                    <div class="col-md-4">
+                        <span class="glyphicon glyphicon-facetime-video xinwen"></span>
+                        <h3>精彩视频</h3><br/>
+                        <p>为玩家提供大逃杀主播、搞笑、娱乐、教学等游戏视频</p>
+                    </div>
+                </a>
+                <a href="news.html">
+                    <div class="col-md-4">
+                        <span class="glyphicon glyphicon-edit xinwen"></span>
+                        <h3>新闻中心</h3><br/>
+                        <p>提供游戏最新资讯、活动公告、主播动态、版本更新日志</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!--三个按钮-->
+    <!--攻略-->
+    <section class="gl">
+        <div class="container">
+            <div class="col-md-6">
+                <h2>绝地求生游戏攻略</h2><br/>
+                <p><span class="glyphicon glyphicon-map-marker tubiao"></span><a href="strategy.html#s1">新手须知</a></p>
+                <p><span class="glyphicon glyphicon-map-marker tubiao"></span><a href="strategy.html#s2">进阶教学</a></p>
+                <p><span class="glyphicon glyphicon-map-marker tubiao"></span><a href="strategy.html#s3">战术策略</a></p>
+            </div>
+            <div class="col-md-6">
+                <img src="image/slide-2.jpg" class="img-responsive" alt=""/>
+            </div>
+        </div>
+    </section>
+    <!--攻略-->
+    <!--新闻-->
+    <section id="sp">
+        <div class="container">
+            <div class="col-md-6">
+                <img src="image/slide-2.jpg" class="img-responsive" alt=""/>
+            </div>
+            <div class="col-md-6">
+                <h2>绝地求生新闻中心</h2><br/>
+                <p><span class="glyphicon glyphicon-record tubiao"></span><a href="news.html#sp">开发者更新日记</a></p>
+                <p><span class="glyphicon glyphicon-record tubiao"></span><a href="news.html#s2">活动公告</a></p>
+                <p><span class="glyphicon glyphicon-record tubiao"></span><a href="news.html#s3">版本更新分析</a></p>
+            </div>
+        </div>
+    </section>
+    <!--新闻-->
+    <!--视频-->
+    <section id="course">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>精彩视频</h2>
+                </div>
+                <div class="col-md-3" v-for="(video, index) in videoList">
+                    <div class="course">
+                        <span class="glyphicon glyphicon-film xin" style="margin-top: 5px"></span>
+                        <p>
+                            <button class="btn bg-primary" @click="showVideo(index)">
+                                {{video.name}}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--视频-->
+    <!--联系我们-->
+    <section id="contact">
+        <div class="lvjing">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2><span class="glyphicon glyphicon-send "></span>&nbsp&nbsp联系KADIMA</h2>
+                        <P>
+
+                        </P>
+                        <address>
+                            <p>
+                                <span class="glyphicon glyphicon-envelope "></span>
+                                &nbsp;&nbsp;WeChat：Kadima
+                            </p>
+                            <p>
+                                <span class="glyphicon glyphicon-earphone "></span>
+                                &nbsp;&nbsp;联系方式：18476318110
+                            </p>
+                            <p>
+                                <span class="glyphicon glyphicon-envelope"></span>
+                                &nbsp;&nbsp;邮箱：517199837@qq.com
+                            </p>
+                        </address>
+                    </div>
+                    <div class="col-md-6">
+                        <form action="msg" id="msgForm">
+                            <input hidden name="action" value="add"/>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="您的姓名" name="name" required/>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="您的邮箱" name="email" required/>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" placeholder="标题" name="title" required/>
+                            </div>
+                            <div class="col-md-12">
+                                <textarea name="content" cols="30" rows="4" class="form-control"
+                                          placeholder="留言" required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="reset" class="form-control" value="清空"/>
+                            </div>
+                        </form>
+                        <div class="col-md-6">
+                            <input type="submit" class="form-control" value="提交" onclick="submit()"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--联系我们-->
+</div>
+<!--footer-->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>岭南师范学院 ©2018 KADIMA</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--footer-->
+<script src="assets/js/home.js"></script>
+<script>
+    function submit() {
+        layer.confirm("您确定要提交留言吗？", {
+            btn: ["好der", "别吧"]
+        }, function () {
+            $.post("msg", $("#msgForm").serialize(), function (data) {
+                if (data == 1)
+                    layer.msg("提交留言成功");
+                else
+                    layer.msg("你说你这故意留空是想测试我吗");
+            }, "text")
+        });
+    }
+</script>
+</body>
+</html>
