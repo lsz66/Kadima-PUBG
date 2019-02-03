@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Kadima.iml" filepath="$PROJECT_DIR$/Kadima.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kadima.iml" filepath="$PROJECT_DIR$/kadima.iml" />
     </modules>
   </component>
 </project>
