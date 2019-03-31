@@ -5,8 +5,8 @@ var lsz = new Vue({
     },
     mounted: function () {
         $.ajax({
-            type: "post",
-            url: "video/get",
+            type: "get",
+            url: "video",
             dataType: "JSON",
             success: function (data) {
                 lsz.videoList = data;

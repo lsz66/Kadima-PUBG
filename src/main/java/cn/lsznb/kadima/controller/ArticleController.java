@@ -4,10 +4,7 @@ import cn.lsznb.kadima.entity.Article;
 import cn.lsznb.kadima.entity.User;
 import cn.lsznb.kadima.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -20,19 +17,19 @@ public class ArticleController {
     @Autowired
     private ArticleService service;
 
-    @PostMapping("get")
+    @GetMapping
     public List<Article> get(Integer type) {
         return service.queryByCategory(type);
     }
 
-    @PostMapping("add")
+    @PostMapping
     public String add(HttpSession session, String title, Integer type, String content) {
         User user = (User) session.getAttribute("user");
         service.add(user.getId(), title, type, content);
         return "<script>opener.location.href = opener.location.href;close();layer.msg('添加成功')</script>";
     }
 
-    @PostMapping("update")
+    @PutMapping
     public ModelAndView update(Integer id, String title, Integer type, String content, HttpSession session) {
         User user = (User) session.getAttribute("user");
         service.update(id, user.getId(), title, type, content);
@@ -40,7 +37,7 @@ public class ArticleController {
         return new ModelAndView(redirect);
     }
 
-    @PostMapping("getNews")
+    @GetMapping("getNews")
     public List<Article> getNews() {
         return service.getAllNews();
     }
