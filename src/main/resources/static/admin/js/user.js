@@ -4,7 +4,7 @@ var lsz = new Vue({
         userList: []
     },
     mounted: function () {
-        $.post("/user/get", {}, function (data) {
+        $.get("/user", {}, function (data) {
             lsz.userList = data;
         }, "JSON");
     },
@@ -12,25 +12,40 @@ var lsz = new Vue({
         lock: function (id) {
             layer.confirm("您确定要锁定这名用户吗？",
                 {btn: ["好der", "不了"]}, function () {
-                    $.post("/user/del", {"id": id}, function () {
-                        location.reload();
-                    }, "text");
+                    $.ajax({
+                        url: "/user",
+                        data: {"id": id},
+                        method: 'delete',
+                        success: () => {
+                            location.reload();
+                        }
+                    });
                 });
         },
         unlock: function (id) {
             layer.confirm("您确定要解锁这名用户吗？",
                 {btn: ["好der", "不了"]}, function () {
-                    $.post("/user/active", {"id": id}, function () {
-                        location.reload();
-                    }, "text");
+                    $.ajax({
+                        url: "/user/active",
+                        data: {"id": id},
+                        method: 'put',
+                        success: () => {
+                            location.reload();
+                        }
+                    });
                 });
         },
         changePassword: function (id, user) {
             layer.prompt({title: "请输入新的密码", formType: 1}, function (pass, index) {
                 layer.close(index);
-                $.post("/user/update", {"id": id, "username": user, "password": pass}, function () {
-                    layer.msg("修改密码成功");
-                }, "text");
+                $.ajax({
+                    url: "/user/update",
+                    data: {"id": id, "username": user, "password": pass},
+                    method: 'put',
+                    success: () => {
+                        layer.msg("修改密码成功");
+                    }
+                });
             });
         }
     }

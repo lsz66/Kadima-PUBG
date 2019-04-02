@@ -4,7 +4,7 @@ var lsz = new Vue({
         videoList: []
     },
     mounted: function () {
-        $.post("/video/get", {}, function (data) {
+        $.get("/video", {}, function (data) {
             lsz.videoList = data;
         }, "JSON");
     },
@@ -12,9 +12,14 @@ var lsz = new Vue({
         del: function (id) {
             layer.confirm("您确定要删除这个视频吗？",
                 {btn: ["好der", "不了"]}, function () {
-                    $.post("/video/del", {"id": id}, function () {
-                        location.reload();
-                    }, "text");
+                    $.ajax({
+                        url: "/video",
+                        data: {"id": id},
+                        method: 'delete',
+                        success: () => {
+                            location.reload();
+                        }
+                    });
                 });
         },
         showPath: function (path) {

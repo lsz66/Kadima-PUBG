@@ -4,7 +4,7 @@ var lsz = new Vue({
         strategyList: []
     },
     mounted: function () {
-        $.post("/article/getStrategy", {}, function (data) {
+        $.get("/article/getStrategy", {}, function (data) {
             lsz.strategyList = data;
         }, "JSON");
     },
@@ -12,9 +12,14 @@ var lsz = new Vue({
         del: function (id) {
             layer.confirm("您确定要删除这篇攻略吗？",
                 {btn: ["好der", "不了"]}, function () {
-                    $.post("/article/del", {"id": id}, function () {
-                        location.reload();
-                    }, "text");
+                    $.ajax({
+                        url: "/article",
+                        data: {"id": id},
+                        method: 'delete',
+                        success: () => {
+                            location.reload();
+                        }
+                    });
                 });
         },
         show: function (content) {

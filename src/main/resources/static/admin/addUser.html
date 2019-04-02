@@ -12,7 +12,6 @@
 <div class="container">
     <h3 class="text-center">添加用户</h3><br/>
     <form action="/user" id="userForm" method="post">
-        <input hidden name="action" value="add"/>
         <div class="input-group input-group-md">
             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
             <input class="form-control" name="username" placeholder="请输入用户名" required type="text"/>
@@ -43,6 +42,7 @@
     });
 
     function register() {
+        console.log("nmsl");
         $.post("/user", $("#userForm").serialize(), function (data) {
             if (data == 0)
                 layer.msg("两次密码输入不匹配，请确认后再试");
@@ -51,8 +51,8 @@
             else if (data == 3)
                 layer.msg("请完成表单后再提交");
             else {
-                opener.location.href = opener.location.href;
                 close();
+                opener.location.href = opener.location.href;
                 layer.msg('添加用户成功')
             }
         }, "text")

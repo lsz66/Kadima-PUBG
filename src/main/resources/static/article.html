@@ -1,20 +1,13 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lsz09
-  Date: 2018/6/10
-  Time: 19:43
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta content="width=device-width,initial-scale=1,user-scalable=no" name="viewport">
     <title>绝地求生</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="assets/css/bootstrap-pubg.css"/>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="assets/css/bootstrap-pubg.css" rel="stylesheet"/>
     <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/vue.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -24,12 +17,12 @@
     <div class="container">
         <!--小屏幕导航按钮和logo-->
         <div class="navbar-header">
-            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="index.html" class="navbar-brand">PUBG</a>
+            <a class="navbar-brand" href="index.html">PUBG</a>
         </div>
         <!--小屏幕导航按钮和logo-->
         <!--导航-->
@@ -69,28 +62,26 @@
 </section>
 <!--导航-->
 <!--文章显示-->
-<section id="page">
+<div id="page">
     <div class="container">
         <div class="row">
             <div class="col-md-12" style="text-align: center">
-                <h1>${article.title}</h1>
+                <h1>{{article.title}}</h1>
             </div>
             <br/>
             <div class="col-md-12 center-block" style="text-align: center">
                 <div class="col-md-5">
-                    <h4>${article.username}</h4>
+                    <h4>{{article.username}}</h4>
                 </div>
                 <div class="col-md-6">
-                    <h4>${article.time.substring(0,16)}</h4>
+                    <h4>{{article.time.substring(0,16)}}</h4>
                 </div>
             </div>
             <hr/>
-            <div class="col-md-12">
-                ${article.content}
-            </div>
+            <div class="col-md-12" v-html="article.content"></div>
         </div>
     </div>
-</section>
+</div>
 <!--文章显示-->
 <!--footer-->
 <footer>
@@ -102,6 +93,7 @@
         </div>
     </div>
 </footer>
+<script src="assets/js/article.js"></script>
 <!--footer-->
 </body>
 </html>

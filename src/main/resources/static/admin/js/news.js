@@ -4,7 +4,7 @@ var lsz = new Vue({
         newsList: []
     },
     mounted: function () {
-        $.post("/article/getNews", {}, function (data) {
+        $.get("/article/getNews", {}, function (data) {
             lsz.newsList = data;
         }, "JSON");
     },
@@ -12,9 +12,14 @@ var lsz = new Vue({
         del: function (id) {
             layer.confirm("您确定要删除这篇新闻吗？",
                 {btn: ["好der", "不了"]}, function () {
-                    $.post("/article/del", {"id": id}, function () {
-                        location.reload();
-                    }, "text");
+                    $.ajax({
+                        url: "/article",
+                        data: {"id": id},
+                        method: 'delete',
+                        success: () => {
+                            location.reload();
+                        }
+                    });
                 });
         },
         show: function (content) {

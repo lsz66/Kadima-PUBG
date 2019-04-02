@@ -4,6 +4,9 @@ import cn.lsznb.kadima.entity.User;
 
 import java.util.List;
 
+/**
+ * @author 李尚哲
+ */
 public interface UserService {
 
     boolean login(User user);

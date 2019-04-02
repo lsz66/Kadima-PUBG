@@ -8,6 +8,9 @@ import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
+/**
+ * @author 李尚哲
+ */
 @Mapper
 public interface ArticleMapper {
 

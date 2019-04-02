@@ -5,12 +5,10 @@ import cn.lsznb.kadima.mapper.VideoMapper;
 import cn.lsznb.kadima.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@Transactional
 public class VideoServiceImpl implements VideoService {
 
     @Autowired

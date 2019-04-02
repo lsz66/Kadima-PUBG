@@ -4,18 +4,26 @@ var lsz = new Vue({
         msgList: []
     },
     mounted: function () {
-        $.post("/msg/get", {}, function (data) {
+        $.get("/msg", {}, function (data) {
             lsz.msgList = data;
         }, "JSON");
     },
     methods: {
-        del: function (id) {
+        del: (id) => {
             layer.confirm("您确定要删掉这条评论吗？",
                 {btn: ["好der", "不了"]}, function () {
-                    $.post("/msg/del", {"id": id}, function () {
-                        location.reload();
-                    }, "text");
+                    $.ajax({
+                        url: "/msg",
+                        data: {"id": id},
+                        method: 'delete',
+                        success: () => {
+                            location.reload();
+                        }
+                    });
                 });
+        },
+        logout: () => {
+            $.get("/user/logout", {}, () => location.href = "/", "text");
         }
     }
 });

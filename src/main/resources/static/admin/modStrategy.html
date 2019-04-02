@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加攻略</title>
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/wangEditor.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h3 class="text-center">添加攻略</h3><br/>
+    <form action="/article" id="newsForm" method="post">
+        <input hidden name="action" value="add"/>
+        <div class="input-group input-group-md">
+            <span class="input-group-addon">标题</span>
+            <input class="form-control" name="title" required type="text"/>
+        </div>
+        <br/>
+        <div class="panel panel-default">
+            <div class="panel-heading">攻略类别</div>
+            <div class="panel-body">
+                <div class="radio">
+                    <label>
+                        <input checked name="type" type="radio" value="4"/>
+                        新手须知
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input name="type" type="radio" value="5"/>
+                        进阶教学
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input name="type" type="radio" value="6"/>
+                        战术策略
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">正文</div>
+            <div class="panel-body">
+                <div id="editor"></div>
+                <input hidden id="content" name="content" value=""/>
+            </div>
+        </div>
+        <button class="btn btn-success" type="submit">提交</button>
+    </form>
+</div>
+<script>
+    var E = window.wangEditor;
+    var editor = new E('#editor');
+    editor.create();
+
+    $("#newsForm").submit(function () {
+        $("#content").val(editor.txt.html());
+    })
+</script>
+</body>
+</html>

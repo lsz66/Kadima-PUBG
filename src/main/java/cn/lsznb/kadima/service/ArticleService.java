@@ -4,6 +4,9 @@ import cn.lsznb.kadima.entity.Article;
 
 import java.util.List;
 
+/**
+ * @author 李尚哲
+ */
 public interface ArticleService {
 
     List<Article> queryByCategory(Integer category);

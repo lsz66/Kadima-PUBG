@@ -10,8 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+/**
+ * @author 李尚哲
+ */
 @RestController
-@RequestMapping("/article/")
+@RequestMapping("/article")
 public class ArticleController {
 
     @Autowired
@@ -42,27 +45,18 @@ public class ArticleController {
         return service.getAllNews();
     }
 
-    @PostMapping("getStrategy")
+    @GetMapping("getStrategy")
     public List<Article> getStrategy() {
         return service.getAllStrategy();
     }
 
-    @PostMapping("view")
-    public ModelAndView view(Integer id) {
-        ModelAndView mav = new ModelAndView();
-        Article article = service.get(id);
-        mav.addObject("article", article);
-        mav.setViewName("forward:article.jsp");
-        return mav;
+    @GetMapping("/{id}")
+    public Article view(@PathVariable Integer id) {
+        return service.get(id);
     }
 
-    @GetMapping("mod")
-    public ModelAndView mod(Integer id) {
-        System.out.println(id);
-        ModelAndView mav = new ModelAndView();
-        Article article = service.get(id);
-        mav.addObject("article", article);
-        mav.setViewName("forward:admin/modArticle.jsp");
-        return mav;
+    @DeleteMapping
+    public void delete(Integer id) {
+        service.delete(id);
     }
 }
